@@ -27,7 +27,7 @@ process_directory() {
             extension=$(echo "$extension" | tr '[:upper:]' '[:lower:]')
             
             # Check if it's a media file
-            if [[ "$extension" =~ ^(gif|jpg|jpeg|png|psd|svg)$ ]]; then
+            if [[ "$extension" =~ ^(gif|jpg|jpeg|png|psd|svg|eps)$ ]]; then
                 relative_path="${file#$root_dir/}"
                 
                 if [ $first_file -eq 1 ]; then
