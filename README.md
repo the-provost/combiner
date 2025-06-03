@@ -9,15 +9,78 @@ When working with AI assistants on large code projects, token limitations can pr
 - Only listing media file paths without their binary content
 - Creating a single, well-formatted text file that provides the AI with a complete view of your codebase structure
 
+## Use Cases
+
+### Code Analysis & Documentation
+- Creating comprehensive codebases for AI code review tools like Claude or ChatGPT
+- Generating documentation snapshots of entire projects
+- Code auditing and analysis across multiple files
+- Creating backups of text-based project files
+
+### Content Management
+- Consolidating documentation spread across multiple files
+- Creating searchable archives of text content
+- Merging configuration files for analysis
+- Collecting logs or data files for processing
+
+### Development Workflows
+- Preparing codebases for LLM-assisted refactoring or debugging
+- Creating training datasets from code repositories
+- Generating comprehensive project overviews for new team members
+- Archiving project states at specific milestones
+
+### Data Processing
+- Aggregating CSV, JSON, or other structured data files
+- Collecting configuration files for batch processing
+- Merging scattered text files into single documents
+
+## Installation
+
+### Make it globally available (Recommended)
+1. Create a local bin directory and move the script:
+   ```bash
+   mkdir -p ~/bin
+   mv combiner.sh ~/bin/combiner
+   chmod +x ~/bin/combiner
+   ```
+
+2. Add ~/bin to your PATH (if not already there):
+   ```bash
+   echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+   source ~/.bashrc
+   ```
+
+3. Now you can use `combiner` from anywhere:
+   ```bash
+   combiner /path/to/your/project
+   ```
+
+### Alternative: System-wide installation
+```bash
+sudo mv combiner.sh /usr/local/bin/combiner
+sudo chmod +x /usr/local/bin/combiner
+```
+
+### Alternative: Shell alias
+```bash
+echo "alias combiner='/path/to/your/combiner.sh'" >> ~/.bashrc
+source ~/.bashrc
+```
+
 ## Usage
 ```bash
-./codebase_consolidator.sh <directory>
+combiner <directory>
+```
+
+Example:
+```bash
+combiner ~/projects/my-web-app
 ```
 
 ## How It Works
 1. Recursively traverses the specified directory
 2. For code and text files: Includes both file path and complete content
-3. For media files (gif, jpg, jpeg, png, psd, svg): Includes only the file path to save tokens
+3. For media files (gif, jpg, jpeg, png, psd, svg, eps): Includes only the file path to save tokens
 4. Creates a single output file (`combined_files.txt`) containing the entire codebase
 
 ## Best Practices for AI Analysis
@@ -27,7 +90,7 @@ When working with AI assistants on large code projects, token limitations can pr
 - Reference specific files or components in your questions
 
 ## Example Workflow
-1. Run: `./codebase_consolidator.sh ~/projects/my-web-app`
+1. Run: `combiner ~/projects/my-web-app`
 2. Upload the generated `combined_files.txt` to your AI assistant
 3. Ask: "Can you explain how the authentication flow works across the codebase?"
 
