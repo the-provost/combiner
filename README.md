@@ -94,6 +94,23 @@ combiner ~/projects/my-web-app
 2. Upload the generated `combined_files.txt` to your AI assistant
 3. Ask: "Can you explain how the authentication flow works across the codebase?"
 
+## Contributing
+Contributions are welcome! Please:
+- Fork the repository
+- Create a feature branch
+- Submit a pull request with a clear description
+- Ensure your contributions are compatible with GPL v3
+
+## License
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+**What this means:**
+- ✅ You can use, modify, and distribute this software
+- ✅ You can use it commercially
+- ⚠️ Any derivative works must also be licensed under GPL v3
+- ⚠️ You must include the license and copyright notice
+- ⚠️ You must disclose the source code of any distributed modifications
+
 ## Notes
 - Consider excluding build directories, node_modules, or other large generated directories to reduce token usage
 - For very large projects, you might want to run this on specific subdirectories
