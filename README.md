@@ -79,12 +79,18 @@ combiner ~/projects/my-web-app
 
 ## How It Works
 1. Recursively traverses the specified directory
-2. For code and text files: Includes both file path and complete content
-3. For media files (gif, jpg, jpeg, png, psd, svg, eps): Includes only the file path to save tokens
-4. Creates a single output file (`combined_files.txt`) containing the entire codebase
+2. **Automatically excludes** common directories that waste tokens:
+   - **Node.js**: `node_modules`, `.npm`, debug logs
+   - **Python**: `__pycache__`, `venv`, `build`, `dist`, `*.egg-info`
+   - **Laravel/PHP**: `vendor`, `storage/logs`, `bootstrap/cache`
+   - **General**: `.git`, `.vscode`, `.idea`, cache folders, build artifacts
+3. For code and text files: Includes both file path and complete content
+4. For media files (gif, jpg, jpeg, png, psd, svg, eps): Includes only the file path to save tokens
+5. Creates a single output file (`combined_files.txt`) containing only your actual codebase
 
 ## Best Practices for AI Analysis
 - Run this script on your project's root directory
+- The script automatically filters out dependencies and build artifacts for optimal token usage
 - Upload the resulting `combined_files.txt` to your AI assistant
 - Ask specific questions about your code structure, implementation details, or potential improvements
 - Reference specific files or components in your questions
@@ -112,7 +118,8 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 - ⚠️ You must disclose the source code of any distributed modifications
 
 ## Notes
-- Consider excluding build directories, node_modules, or other large generated directories to reduce token usage
+- The script intelligently excludes dependency folders (`node_modules`, `vendor`, etc.) and build artifacts to optimize token usage
 - For very large projects, you might want to run this on specific subdirectories
 - The script preserves file paths, making it easy for the AI to understand project structure
 - Binary and media files are just listed by path to prevent token waste on non-textual content
+- Output includes a summary showing how many directories were skipped for transparency
